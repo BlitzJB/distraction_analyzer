@@ -4,6 +4,7 @@ from math import ceil
 import matplotlib.pyplot as plt
 
 TIMESTEP_MINUTES: float = 5
+FORMAT: str = '%H:%M %d-%m-%Y'
 
 class Analizer(object):
   """Central object for all tasks concerning turning raw time log text file into a plot"""
@@ -11,7 +12,7 @@ class Analizer(object):
     self.fp = filedialog.askopenfile()
     self.content = self.fp.readlines() 
     self.timestamps = [
-      datetime.strptime(x.replace('\n', '').strip(), '%H:%M %d-%m-%Y') 
+      datetime.strptime(x.replace('\n', '').strip(), FORMAT) 
       for x in self.content
       ]
     
